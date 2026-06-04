@@ -1,0 +1,33 @@
+# Maven
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+!backend/.mvn/wrapper/maven-wrapper.properties
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Spring Boot
+backend/src/main/resources/application-local.properties
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Environment / secrets
+.env
+.env.local
+*.env
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
