@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { fetchProperty, type PropertyResponse } from './api/property'
+import ValuationCard from './components/ValuationCard'
+import NearbySalesList from './components/NearbySalesList'
 
 function App() {
   const [address, setAddress] = useState('')
@@ -44,7 +46,8 @@ function App() {
 
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      {data && <pre style={{ background: '#f3f4f6', padding: '16px', borderRadius: '4px' }}>{JSON.stringify(data, null, 2)}</pre>}
+      {data && <ValuationCard data={data} />}
+      {data && <NearbySalesList sales={data.nearbySales} />}
     </div>
   )
 }
