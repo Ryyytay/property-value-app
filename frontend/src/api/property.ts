@@ -4,6 +4,8 @@ export interface NearbySale {
   soldDate: string
   bedrooms: number
   distanceKm: number
+  lat: number
+  lng: number
 }
 
 export interface PropertyResponse {
@@ -16,6 +18,8 @@ export interface PropertyResponse {
   propertyType: string
   lastSoldPrice: number
   lastSoldDate: string
+  lat: number
+  lng: number
   nearbySales: NearbySale[]
 }
 
