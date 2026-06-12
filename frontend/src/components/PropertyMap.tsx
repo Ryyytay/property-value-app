@@ -15,8 +15,9 @@ const currency = new Intl.NumberFormat('en-AU', { style: 'currency', currency: '
 
 export default function PropertyMap({ data }: { data: PropertyResponse }) {
   return (
-    <div style={{ marginTop: '32px', height: '400px', borderRadius: '8px', overflow: 'hidden' }}>
+    <div style={{ marginTop: '32px' }}>
       <h3 style={{ marginBottom: '12px' }}>Map</h3>
+      <div style={{ height: '400px', borderRadius: '8px', overflow: 'hidden' }}>
       <MapContainer
         center={[data.lat, data.lng]}
         zoom={15}
@@ -45,6 +46,7 @@ export default function PropertyMap({ data }: { data: PropertyResponse }) {
           </Marker>
         ))}
       </MapContainer>
+      </div>
     </div>
   )
 }

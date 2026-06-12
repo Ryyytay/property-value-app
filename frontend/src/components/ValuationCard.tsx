@@ -6,15 +6,19 @@ interface Props {
   data: PropertyResponse
 }
 
+function confidenceLabel(saleCount: number): { label: string; bg: string; color: string } {
+  if (saleCount >= 5) return { label: 'High Confidence', bg: '#dcfce7', color: '#166534' }
+  if (saleCount >= 3) return { label: 'Medium Confidence', bg: '#fef9c3', color: '#854d0e' }
+  return { label: 'Low Confidence', bg: '#fee2e2', color: '#991b1b' }
+}
+
 export default function ValuationCard({ data }: Props) {
   const low = Math.round(data.estimatedValue * 0.9)
   const high = Math.round(data.estimatedValue * 1.1)
+  const confidence = confidenceLabel(data.nearbySales.length)
 
   return (
     <div style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '24px', marginTop: '24px' }}>
-
-      {/* Address */}
-      <p style={{ color: '#6b7280', margin: '0 0 8px 0' }}>{data.address}</p>
 
       {/* Estimated value */}
       <h2 style={{ fontSize: '2.5rem', margin: '0', color: '#111827' }}>
@@ -27,8 +31,8 @@ export default function ValuationCard({ data }: Props) {
       </p>
 
       {/* Confidence badge */}
-      <span style={{ background: '#dcfce7', color: '#166534', padding: '4px 12px', borderRadius: '999px', fontSize: '14px' }}>
-        High Confidence
+      <span style={{ background: confidence.bg, color: confidence.color, padding: '4px 12px', borderRadius: '999px', fontSize: '14px' }}>
+        {confidence.label}
       </span>
 
       {/* Property details grid */}

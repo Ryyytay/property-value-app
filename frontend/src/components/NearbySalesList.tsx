@@ -10,7 +10,7 @@ function timeAgo(dateStr: string): string {
 export default function NearbySalesList({ sales }: { sales: NearbySale[] }) {
   return (
     <div style={{ marginTop: '32px' }}>
-      <h3 style={{ marginBottom: '12px' }}>Nearby Sales</h3>
+      <h3 style={{ marginBottom: '12px' }}>Nearby Sales ({sales.length})</h3>
       {sales.map((sale, i) => (
         <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid #e5e7eb' }}>
           <div>

@@ -1,5 +1,6 @@
 package com.propertyapp.backend;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,7 +15,10 @@ public class PropertyController {
     }
 
     @GetMapping("/property")
-    public PropertyResponse getProperty(@RequestParam String address) {
-        return propertyService.getProperty(address);
+    public ResponseEntity<?> getProperty(@RequestParam String address) {
+        if (address == null || address.isBlank()) {
+            return ResponseEntity.badRequest().body("Address must not be empty");
+        }
+        return ResponseEntity.ok(propertyService.getProperty(address));
     }
 }
